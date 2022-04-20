@@ -51,7 +51,7 @@ const DoubleTap = (props) => {
         <TouchableOpacity
           onPress={() => _onTap(props)}
           {...props}>
-          {props.renderChild()}
+          {props.children}
         </TouchableOpacity>
       ) : null}
       {props.type == "TH" ? (
