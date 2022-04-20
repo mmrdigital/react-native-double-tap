@@ -1,10 +1,7 @@
 import React from "react";
-import { View, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from "react-native";
-
-
+import { View, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback, TouchableWithoutFeedback } from "react-native";
 
 const DoubleTap = (props) => {
-
   let delayTime = props.delay ? props.delay : 150;
   let firstPress = true;
   let lastTime = new Date();
@@ -61,8 +58,15 @@ const DoubleTap = (props) => {
         <TouchableHighlight
           onPress={() => _onTap(props)}
           {...props}>
-          {props.renderChild()}
+          {props.children}
         </TouchableHighlight>
+      ) : null}
+      {props.type == "TW" ? (
+        <TouchableWithoutFeedback
+          onPress={() => _onTap(props)}
+          {...props}>
+          {props.children}
+        </TouchableWithoutFeedback>
       ) : null}
       {props.type == "TN" ? (
         <TouchableNativeFeedback
@@ -70,7 +74,7 @@ const DoubleTap = (props) => {
           {...props}
         >
           <View>
-            {props.renderChild()}
+            {props.children}
           </View>
         </TouchableNativeFeedback>
       ) : null}
